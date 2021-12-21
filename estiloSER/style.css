@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
+}
+
+.container1 {
+  padding: 1px 9%;
+  height: 560px;
+  background-color: rgb(255, 255, 255);
+}
+
+.container1 .heading {
+  text-align: center;
+  padding-bottom: 15px;
+  color: rgb(126, 0, 0);
+  text-shadow: 0 5px 10px rgba(226, 226, 226, 0.2);
+  font-size: 50px;
+}
+/*
+.container .box-container {
+  display: grid;
+  color: aqua;
+  font: size 200px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1500px;
+}*/
+.container1 .box-container .box {
+  height: 40%;
+  position: relative;
+  width: 30%;
+  box-shadow: 0 5px 10px rgb(10, 10, 10);
+  border-radius: 5px;
+  background: rgba(6, 169, 245, 0.671);
+  right: 10px;
+  text-align: center;
+  padding: 30px 1px;
+
+  margin: 20px;
+}
+.container1 .box-container .box img {
+  height: 60px;
+}
+.container1 .box-container .box img:hover {
+  margin-right: 50px;
+}
+.container1 .box-container .box h3 {
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  padding: 10px 0;
+}
+.container1 .box-container .box p {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.container1 .box-container .box .btn {
+  margin-top: 10px;
+  display: inline-block;
+  background: rgb(68, 7, 7);
+  color: #fff;
+  font-size: 17px;
+  border-radius: 5px;
+  padding: 8px 25px;
+}
+
+.container1 .box-container .box .btn:hover {
+  letter-spacing: 6px;
+  background-color: rgb(219, 208, 208);
+  color: brown;
+}
+
+.container1 .box-container .box:hover {
+  box-shadow: 0 10px 15px rgba(6, 169, 245, 0.671);
+  transform: scale(1.2);
+  background-color: rgb(255, 255, 255);
+}
+@media (max-width: 768px) {
+  .container1 {
+    padding: 20px;
+  }
+}
+/*box1*/
+.container1 .box-container .box1 {
+  height: 40%;
+  position: relative;
+  width: 30%;
+  box-shadow: 0 5px 10px rgb(10, 10, 10);
+  border-radius: 5px;
+  background: rgba(6, 169, 245, 0.671);
+  right: 10px;
+  text-align: center;
+  padding: 30px 1px;
+  right: -360px;
+  bottom: 307px;
+  margin: 20px;
+}
+.container1 .box-container .box1 img {
+  height: 60px;
+}
+.container1 .box-container .box1 img:hover {
+  margin-right: 50px;
+}
+.container1 .box-container .box1 h3 {
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  padding: 10px 0;
+}
+.container1 .box-container .box1 p {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.container1 .box-container .box1 .btn {
+  margin-top: 10px;
+  display: inline-block;
+  background: rgb(68, 7, 7);
+  color: #fff;
+  font-size: 17px;
+  border-radius: 5px;
+  padding: 8px 25px;
+}
+
+.container1 .box-container .box1 .btn:hover {
+  letter-spacing: 6px;
+  background-color: rgb(219, 208, 208);
+  color: brown;
+}
+
+.container1 .box-container .box1:hover {
+  box-shadow: 0 10px 15px rgba(6, 169, 245, 0.671);
+  transform: scale(1.2);
+  background-color: rgb(255, 255, 255);
+}
+/*box1*/
+.container1 .box-container .box2 {
+  height: 40%;
+  position: relative;
+  width: 30%;
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+  border-radius: 5px;
+  background: rgba(6, 169, 245, 0.671);
+  right: 10px;
+  text-align: center;
+  padding: 30px 1px;
+  right: -730px;
+  bottom: 615px;
+  margin: 20px;
+}
+.container1 .box-container .box2 img {
+  height: 60px;
+}
+.container1 .box-container .box2 img:hover {
+  margin-right: 50px;
+}
+.container1 .box-container .box2 h3 {
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  padding: 10px 0;
+}
+.container1 .box-container .box2 p {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.container1 .box-container .box2 .btn {
+  margin-top: 10px;
+  display: inline-block;
+  background: rgb(68, 7, 7);
+  color: #fff;
+  font-size: 17px;
+  border-radius: 5px;
+  padding: 8px 25px;
+}
+
+.container1 .box-container .box2 .btn:hover {
+  letter-spacing: 6px;
+  background-color: rgb(219, 208, 208);
+  color: brown;
+}
+
+.container1 .box-container .box2:hover {
+  box-shadow: 0 10px 15px rgba(6, 169, 245, 0.671);
+  transform: scale(1.2);
+  background-color: rgb(255, 255, 255);
+}
