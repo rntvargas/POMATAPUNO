@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador de Estudios Científicos</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body { background: radial-gradient(circle, #0f172a, #1e293b 60%, #0f172a); color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        .container { max-width: 900px; margin: auto; padding: 2rem; }
+        .card { background-color: #1e293b; border-radius: 1.5rem; padding: 2.5rem; margin-bottom: 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+        .button { background-color: #06b6d4; color: #f1f5f9; border-radius: 0.5rem; padding: 0.75rem 1.5rem; transition: all 0.3s ease-in-out; }
+        .button:hover { background-color: #0891b2; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5); }
+        .header { font-weight: 800; background: linear-gradient(to right, #06b6d4, #0891b2); -webkit-background-clip: text; color: transparent; text-align: center; margin-bottom: 2rem; font-size: 3rem; }
+        .input, .select, .textarea { background-color: #0f172a; border-radius: 1rem; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid #334155; color: #f1f5f9; transition: border-color 0.3s; }
+        .input:focus, .select:focus, .textarea:focus { outline: none; border-color: #06b6d4; }
+        .form-group { margin-bottom: 1.5rem; }
+        .label { font-weight: 600; margin-bottom: 0.5rem; color: #94a3b8; }
+        .results-container { background-color: #0f172a; border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); }
+        .result-card { background-color: #1e293b; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); color: #f1f5f9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Clasificador de Estudios Científicos</h1>
+        <div class="card">
+            <div class="form-group">
+                <label for="apiKey" class="label">🔑 API Key de ChatGPT</label>
+                <input type="password" id="apiKey" placeholder="Ingresa tu API Key" class="input w-full">
+            </div>
+            <div class="form-group">
+                <label for="model" class="label">🧠 Modelo GPT a Utilizar</label>
+                <select id="model" class="select w-full">
+                    <option value="gpt-4">GPT-4 (Alta precisión)</option>
+                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Rápido y económico)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="studyText" class="label">📄 Texto del Estudio</label>
+                <textarea id="studyText" placeholder="Ingresa el texto del estudio aquí..." class="textarea w-full h-40"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="fileInput" class="label">📁 Subir Archivo</label>
+                <input type="file" id="fileInput" accept=".txt" class="input w-full">
+            </div>
+            <button onclick="classifyStudy()" class="button w-full">Clasificar y Recomendar</button>
+            <div id="errorMessage" class="text-red-400 mt-4"></div>
+        </div>
+        <div id="results" class="results-container"></div>
+    </div>
+    <script>
+        async function classifyStudy() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const model = document.getElementById('model').value;
+            const studyText = document.getElementById('studyText').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const results = document.getElementById('results');
+            errorMessage.textContent = '';
+            results.innerHTML = '';
+
+            if (!apiKey || !studyText) {
+                errorMessage.textContent = 'Por favor, ingresa tu API Key y el texto del estudio.';
+                return;
+            }
+
+            try {
+                const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+                    model: model,
+                    messages: [
+                        { role: 'system', content: 'Eres un experto en análisis estadístico.' },
+                        { role: 'user', content: `Clasifica este estudio y recomienda métodos estadísticos apropiados: ${studyText}` }
+                    ]
+                }, {
+                    headers: { 'Authorization': `Bearer ${apiKey}` }
+                });
+
+                const classifiedResults = response.data.choices[0].message.content.split('\n').filter(line => line.trim() !== '');
+                classifiedResults.forEach(line => {
+                    const label = line.toLowerCase().includes('método') || line.toLowerCase().includes('instrumento') ? '🔍 Método Estadístico' : '📊 Recomendación';
+                    const card = `<div class="result-card"><p><strong>${label}:</strong> ${line}</p></div>`;
+                    results.innerHTML += card;
+                });
+            } catch (error) {
+                errorMessage.textContent = 'Ocurrió un error al procesar tu solicitud. Por favor, verifica tu API Key.';
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+ 
